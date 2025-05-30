@@ -37,6 +37,8 @@ pub fn format_compound_op(ctx: &Context, compound_op: &CompoundOp, shape: Shape)
         PipeEqual = " |= ",
         #[cfg(feature = "pluto")]
         TildeEqual = " ~= ",
+        #[cfg(feature = "pluto")]
+        DoubleQuestionMarkEqual = " ??= ",
     }, |other| panic!("unknown node {:?}", other))
 }
 
