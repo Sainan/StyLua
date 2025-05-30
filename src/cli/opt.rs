@@ -238,6 +238,7 @@ convert_enum!(LuaVersion, ArgLuaVersion, {
     #[cfg(feature = "luau")] Luau,
     #[cfg(feature = "luajit")] LuaJIT,
     #[cfg(feature = "cfxlua")] CfxLua,
+    #[cfg(feature = "pluto")] Pluto,
 });
 
 convert_enum!(LineEndings, ArgLineEndings, {

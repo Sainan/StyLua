@@ -20,20 +20,20 @@ pub fn format_compound_op(ctx: &Context, compound_op: &CompoundOp, shape: Shape)
         MinusEqual = " -= ",
         StarEqual = " *= ",
         SlashEqual = " /= ",
-        #[cfg(feature = "luau")]
+        #[cfg(any(feature = "luau", feature = "pluto"))]
         PercentEqual = " %= ",
         CaretEqual = " ^= ",
-        #[cfg(feature = "luau")]
+        #[cfg(any(feature = "luau", feature = "pluto"))]
         TwoDotsEqual = " ..= ",
-        #[cfg(feature = "luau")]
+        #[cfg(any(feature = "luau", feature = "pluto"))]
         DoubleSlashEqual = " //= ",
-        #[cfg(feature = "cfxlua")]
+        #[cfg(any(feature = "cfxlua", feature = "pluto"))]
         DoubleLessThanEqual = " <<= ",
-        #[cfg(feature = "cfxlua")]
+        #[cfg(any(feature = "cfxlua", feature = "pluto"))]
         DoubleGreaterThanEqual = " >>= ",
-        #[cfg(feature = "cfxlua")]
+        #[cfg(any(feature = "cfxlua", feature = "pluto"))]
         AmpersandEqual = " &= ",
-        #[cfg(feature = "cfxlua")]
+        #[cfg(any(feature = "cfxlua", feature = "pluto"))]
         PipeEqual = " |= ",
     }, |other| panic!("unknown node {:?}", other))
 }
