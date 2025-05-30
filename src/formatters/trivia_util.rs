@@ -492,6 +492,8 @@ impl GetLeadingTrivia for BinOp {
             | BinOp::Pipe(token)
             | BinOp::DoubleGreaterThan(token)
             | BinOp::Tilde(token) => GetLeadingTrivia::leading_trivia(token),
+            #[cfg(feature = "pluto")]
+            BinOp::ExclamationMarkEqual(token) => GetLeadingTrivia::leading_trivia(token),
             other => panic!("unknown node {:?}", other),
         }
     }
@@ -522,6 +524,8 @@ impl GetTrailingTrivia for BinOp {
             | BinOp::Pipe(token)
             | BinOp::DoubleGreaterThan(token)
             | BinOp::Tilde(token) => GetTrailingTrivia::trailing_trivia(token),
+            #[cfg(feature = "pluto")]
+            BinOp::ExclamationMarkEqual(token) => GetTrailingTrivia::trailing_trivia(token),
             other => panic!("unknown node {:?}", other),
         }
     }

@@ -97,6 +97,8 @@ pub fn format_binop(ctx: &Context, binop: &BinOp, shape: Shape) -> BinOp {
         Slash = " / ",
         Star = " * ",
         TildeEqual = " ~= ",
+        #[cfg(feature = "pluto")]
+        ExclamationMarkEqual = " ~= ", // Normalize != to ~=
         TwoDots = " .. ",
         TwoEqual = " == ",
         #[cfg(feature = "lua53")]

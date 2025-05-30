@@ -187,6 +187,8 @@ define_update_trivia!(BinOp, |this, leading, trailing| {
         Slash,
         Star,
         TildeEqual,
+        #[cfg(feature = "pluto")]
+        ExclamationMarkEqual,
         TwoDots,
         TwoEqual,
         #[cfg(feature = "lua53")]
