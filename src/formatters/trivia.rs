@@ -440,7 +440,7 @@ define_update_trivia!(Return, |this, leading, trailing| {
 define_update_trivia!(LastStmt, |this, leading, trailing| {
     match this {
         LastStmt::Break(token) => LastStmt::Break(token.update_trivia(leading, trailing)),
-        #[cfg(feature = "luau")]
+        #[cfg(any(feature = "luau", feature = "pluto"))]
         LastStmt::Continue(token) => LastStmt::Continue(token.update_trivia(leading, trailing)),
         LastStmt::Return(r#return) => LastStmt::Return(r#return.update_trivia(leading, trailing)),
         other => panic!("unknown node {:?}", other),

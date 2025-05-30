@@ -1,4 +1,4 @@
-#[cfg(feature = "luau")]
+#[cfg(any(feature = "luau", feature = "pluto"))]
 use crate::formatters::general::format_symbol;
 use crate::{
     context::{create_indent_trivia, create_newline_trivia, Context, FormatNode},
@@ -227,7 +227,7 @@ pub fn format_last_stmt_no_trivia(ctx: &Context, last_stmt: &LastStmt, shape: Sh
         LastStmt::Break(token) => LastStmt::Break(fmt_symbol!(ctx, token, "break", shape)),
 
         LastStmt::Return(return_node) => LastStmt::Return(format_return(ctx, return_node, shape)),
-        #[cfg(feature = "luau")]
+        #[cfg(any(feature = "luau", feature = "pluto"))]
         LastStmt::Continue(token) => LastStmt::Continue(format_symbol(
             ctx,
             token,
@@ -450,7 +450,7 @@ fn last_stmt_remove_leading_newlines(last_stmt: LastStmt) -> LastStmt {
 
             LastStmt::Return(return_node.with_token(token))
         }
-        #[cfg(feature = "luau")]
+        #[cfg(any(feature = "luau", feature = "pluto"))]
         LastStmt::Continue(token) => {
             let leading_trivia = trivia_remove_leading_newlines(token.leading_trivia().collect());
             LastStmt::Continue(

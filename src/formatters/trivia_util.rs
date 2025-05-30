@@ -166,7 +166,7 @@ fn is_expression_simple(expression: &Expression) -> bool {
 fn is_last_stmt_simple(last_stmt: &LastStmt) -> bool {
     match last_stmt {
         LastStmt::Break(_) => true,
-        #[cfg(feature = "luau")]
+        #[cfg(any(feature = "luau", feature = "pluto"))]
         LastStmt::Continue(_) => true,
         LastStmt::Return(r#return) => {
             r#return.returns().is_empty() || r#return.returns().iter().all(is_expression_simple)
@@ -996,7 +996,7 @@ impl GetTrailingTrivia for LastStmt {
                 }
             }
             LastStmt::Break(token) => GetTrailingTrivia::trailing_trivia(token),
-            #[cfg(feature = "luau")]
+            #[cfg(any(feature = "luau", feature = "pluto"))]
             LastStmt::Continue(token) => GetTrailingTrivia::trailing_trivia(token),
             other => panic!("unknown node {:?}", other),
         }
