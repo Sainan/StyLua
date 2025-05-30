@@ -92,6 +92,8 @@ pub fn format_binop(ctx: &Context, binop: &BinOp, shape: Shape) -> BinOp {
         LessThanEqual = " <= ",
         Minus = " - ",
         Or = " or ",
+        #[cfg(feature = "pluto")]
+        DoubleQuestionMark = " ?? ",
         Percent = " % ",
         Plus = " + ",
         Slash = " / ",
